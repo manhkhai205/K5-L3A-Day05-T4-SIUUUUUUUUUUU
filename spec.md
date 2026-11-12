@@ -4,9 +4,9 @@
 
 | Họ và Tên | Mã Học Viên | Việc đã làm |
 |---|---|---|
-| [Thành viên 1] | [Mã] | Điều phối, §2 kịch bản rủi ro, trình bày lát cắt |
-| [Thành viên 2] | [Mã] | §3 UX khi AI sai, câu chữ AI, kiểm tra HAX/PAIR |
-| [Thành viên 3] | [Mã] | §4 mức tự chủ, dựng prototype, trình bày demo |
+| Nguyễn Viết Mạnh Khải | 2A202603664 | Điều phối, §2 kịch bản rủi ro, trình bày lát cắt |
+| Vũ Đức Anh | 2A202603573 | §3 UX khi AI sai, câu chữ AI, kiểm tra HAX/PAIR |
+| Bảo Hoàng Thiên Phúc | 2A202603550 | §4 mức tự chủ, dựng prototype, trình bày demo |
 
 ## §1. Lát cắt & phạm vi
 
