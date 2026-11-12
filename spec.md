@@ -50,7 +50,7 @@ Người mua thấy thẻ “Chưa đủ căn cứ”, ba bằng chứng có ngu
 
 Chọn **trả lời kèm giới hạn + chuyển người**, không hỏi lại vì dữ liệu tối thiểu đủ để nói “chưa đủ căn cứ”, không tự hoàn. Loại “từ chối luôn” vì ảnh có thể thiếu; loại hỏi chung chung vì người mua đã gửi ảnh. Đây là lỗi ngữ cảnh/đánh giá nên câu chữ phải phân biệt “chưa đủ căn cứ” với “sai”.
 
-HAX G2: nhãn “chưa đủ căn cứ”; HAX G11/PAIR Explainability: nguồn từng bằng chứng; HAX G8/G9 + PAIR Feedback & Control: không có nút hoàn, có bổ sung/chuyển người.
+Ba nguyên tắc được trỏ trực tiếp vào prototype: **G10** ở thẻ “Chưa đủ căn cứ” và việc không có nút gửi hoàn (thu hẹp phạm vi khi nghi ngờ); **G11 + PAIR Explainability & Trust** ở bảng “Nguồn bằng chứng”, nơi hiển thị snapshot lúc đặt, ảnh và lịch sử thay đổi; **G9 + PAIR Errors & Graceful Failure** ở hai nút “Yêu cầu bổ sung đúng mục” và “Chuyển nhân viên”, tạo đường sửa/chuyển người thay vì xử sai.
 
 ### Ca B — mô tả đã sửa
 
@@ -86,7 +86,7 @@ Mức này đổi lời hứa từ “AI xử lý xong” thành “AI đưa đ�
 - Chọn ca “người bán đúng” hoặc “mô tả đã sửa”; bấm bổ sung bằng chứng, chuyển nhân viên, mở bản nháp hoàn tiền. Prototype giữ trạng thái sau mỗi thao tác: nút đã gửi/chuyển bị khóa để không tạo hành động lặp; bản nháp luôn yêu cầu người duyệt.
 - Khi chuyển người, prototype hiện trạng thái hồ sơ “Đang chờ người”, SLA 5 phút cho trưởng nhóm và 24 giờ phản hồi cho người bán. Tool `phat_shop` chỉ hiện là “CẤM · không có thao tác”, không có nút để bấm.
 - `yeu_cau_bang_chung` chỉ nêu đúng mục còn thiếu: ca A yêu cầu nêu điểm sai cụ thể, ca B yêu cầu ảnh nhãn/thông số dung tích; không hỏi lại các bằng chứng đã nhận.
-- (1) nhãn độ chắc/giới hạn; (2) nguồn snapshot; (3) mức tự chủ; (4) chuyển người và SLA; (5) hai bên cùng được nghe.
+- Chú thích trên màn hình trỏ cụ thể: số 1 = G10 ở thẻ giới hạn; số 2 = G11/PAIR Explainability ở nguồn snapshot; số 4 = G9/PAIR Graceful Failure ở các nút bổ sung hoặc chuyển người. Bảng mức tự chủ và trạng thái hồ sơ cho thấy hành động nào tự làm, hành động nào cần duyệt.
 
 Chọn bằng chứng cụ thể thay % confidence vì phần trăm tạo cảm giác chính xác giả. Đã cân nhắc chat toàn màn hình nhưng loại vì khó thấy nguồn quyết định và ranh giới quyền hạn; bảng bằng chứng cạnh chat giúp kiểm tra được.
 
