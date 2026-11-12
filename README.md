@@ -6,13 +6,13 @@
 
 Bài nộp cần **danh sách thành viên** và **mỗi người làm gì**. Nhóm tự chia việc, không bắt buộc theo vai trò cố định. Ví dụ một cách chia (không bắt buộc): dựng prototype, viết câu chữ AI, giữ bảng kịch bản và kịch bản demo.
 
-**Lớp:** ____ · **Bàn / zone:** ____ · **Track:** ____
+**Lớp:** \_**\_ · **Bàn / zone:** \_**\_ · **Track:** \_\_\_\_
 
-| Họ và Tên | Mã Học Viên | Việc đã làm |
-|---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Họ và Tên             | Mã Học Viên | Việc đã làm |
+| --------------------- | ----------- | ----------- |
+| Nguyễn Viết Mạnh Khải | 2A202603664 |             |
+| Vũ Đức Anh            | 2A202603573 |             |
+| Bảo Hoàng Thiên Phúc  | 2A202603550 |             |
 
 > Copy bảng này lên đầu `spec.md` và điền. Ghi cụ thể việc mỗi người làm — khi demo, ai cũng có thể bị hỏi về phần có tên mình.
 
@@ -27,32 +27,32 @@ Bài nộp cần **danh sách thành viên** và **mỗi người làm gì**. Nh
 
 ## Bắt đầu từ đâu?
 
-1. Đọc **`01-challenge-brief.md`** để hiểu khung chung, rồi chọn **một** track trong **`tracks/`**.
-2. Mở **`02-guide.md`** — hướng dẫn từng chặng, đang ở chặng nào đọc mục đó.
-3. Viết bài nộp theo **`03-spec-template.md`** — dàn ý ngắn, mỗi mục cần bằng chứng gì và lập luận gì.
-4. Đọc **`04-rubric.md`** ngay từ đầu — biết trước bài được chấm theo tiêu chí nào.
+1. Đọc `01-challenge-brief.md` để hiểu khung chung, rồi chọn **một** track trong `tracks/`.
+2. Mở `02-guide.md` — hướng dẫn từng chặng, đang ở chặng nào đọc mục đó.
+3. Viết bài nộp theo `03-spec-template.md` — dàn ý ngắn, mỗi mục cần bằng chứng gì và lập luận gì.
+4. Đọc `04-rubric.md` ngay từ đầu — biết trước bài được chấm theo tiêu chí nào.
 
-| File / thư mục | Nội dung |
-|---|---|
-| `01-challenge-brief.md` | Đề bài: bảng 5 track · lát cắt · ràng buộc chung · tiêu chí nghiệm thu |
-| `02-guide.md` | Hướng dẫn 6 chặng + demo, mỗi chặng mở bằng các câu hỏi nhóm phải tự trả lời |
-| `03-spec-template.md` | Dàn ý bài nộp: mỗi mục cần bằng chứng gì, lập luận gì |
-| `04-rubric.md` | Rubric 100 điểm + bonus, và checklist TA xác minh ba mốc |
-| `tracks/` | **5 track**, cùng một khung mục: T1 Y tế · T2 Giáo dục · T3 Du lịch · T4 Thương mại điện tử · T5 Ví điện tử. Mỗi track có sản phẩm thật để tham khảo, lát cắt, những việc AI có thể làm (tool), tin mồi |
-| `prototype-sample/` | Prototype mẫu của giảng viên (track Du lịch): một ca ở ba mức tự chủ. Mở `index.html` bằng trình duyệt. Xem để biết "đủ" trông thế nào — đừng chép giao diện |
+| File / thư mục          | Nội dung                                                                                                                                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `01-challenge-brief.md` | Đề bài: bảng 5 track · lát cắt · ràng buộc chung · tiêu chí nghiệm thu                                                                                                                                  |
+| `02-guide.md`           | Hướng dẫn 6 chặng + demo, mỗi chặng mở bằng các câu hỏi nhóm phải tự trả lời                                                                                                                            |
+| `03-spec-template.md`   | Dàn ý bài nộp: mỗi mục cần bằng chứng gì, lập luận gì                                                                                                                                                   |
+| `04-rubric.md`          | Rubric 100 điểm + bonus, và checklist TA xác minh ba mốc                                                                                                                                                |
+| `tracks/`               | **5 track**, cùng một khung mục: T1 Y tế · T2 Giáo dục · T3 Du lịch · T4 Thương mại điện tử · T5 Ví điện tử. Mỗi track có sản phẩm thật để tham khảo, lát cắt, những việc AI có thể làm (tool), tin mồi |
+| `prototype-sample/`     | Prototype mẫu của giảng viên (track Du lịch): một ca ở ba mức tự chủ. Mở `index.html` bằng trình duyệt. Xem để biết "đủ" trông thế nào — đừng chép giao diện                                            |
 
 ## Lịch — 240 phút
 
-| Chặng | Phút | Câu hỏi chính | Mốc TA |
-|---|---|---|---|
-| 1 · Đọc đề | 10 | Lát cắt này là gì, sai thì ai chịu? | |
-| 2 · Lường trước kịch bản | 35 | Ở đâu AI sẽ sai, và sai chỗ nào đắt nhất? | **M1** |
-| 3 · **UX khi AI sai** | 45 | Lúc AI không chắc hoặc sai, người dùng thấy gì, làm gì tiếp? | |
-| 4 · **Mức tự chủ** | 35 | Việc nào AI tự làm, việc nào hỏi người, việc nào không làm? | **M2** |
-| Nghỉ | 15 | | |
-| 5 · **Prototype** | 60 | Người dùng có *thấy và bấm* được thiết kế đó không? | **M3** |
-| 6 · Tốt là gì | 10 | Ba tiêu chí nào thì dám phát hành? | |
-| Demo | 30 | Một khối: demo trong zone, hoặc xung phong trước lớp (bonus) | |
+| Chặng                    | Phút | Câu hỏi chính                                                | Mốc TA |
+| ------------------------ | ---- | ------------------------------------------------------------ | ------ |
+| 1 · Đọc đề               | 10   | Lát cắt này là gì, sai thì ai chịu?                          |        |
+| 2 · Lường trước kịch bản | 35   | Ở đâu AI sẽ sai, và sai chỗ nào đắt nhất?                    | **M1** |
+| 3 · **UX khi AI sai**    | 45   | Lúc AI không chắc hoặc sai, người dùng thấy gì, làm gì tiếp? |        |
+| 4 · **Mức tự chủ**       | 35   | Việc nào AI tự làm, việc nào hỏi người, việc nào không làm?  | **M2** |
+| Nghỉ                     | 15   |                                                              |        |
+| 5 · **Prototype**        | 60   | Người dùng có _thấy và bấm_ được thiết kế đó không?          | **M3** |
+| 6 · Tốt là gì            | 10   | Ba tiêu chí nào thì dám phát hành?                           |        |
+| Demo                     | 30   | Một khối: demo trong zone, hoặc xung phong trước lớp (bonus) |        |
 
 Chặng 3, 4, 5 là phần chính — **140 phút** và phần lớn số điểm. **Thiếu giờ thì bỏ chặng 6 và giảm số kịch bản ở chặng 2; không bao giờ cắt chặng 3, 4, 5.**
 
@@ -88,9 +88,9 @@ Nhóm chỉ cần lấy **đúng một file** từ repo này: `03-spec-template.
 K5-<lớp>-Day05-<track>-<tên nhóm>
 ```
 
-| Ví dụ | Của nhóm nào |
-|---|---|
-| `K5-L3A-Day05-T3-BayNhanh` | Lớp L3A · track T3 Du lịch · nhóm BayNhanh |
+| Ví dụ                      | Của nhóm nào                                  |
+| -------------------------- | --------------------------------------------- |
+| `K5-L3A-Day05-T3-BayNhanh` | Lớp L3A · track T3 Du lịch · nhóm BayNhanh    |
 | `K5-L3B-Day05-T5-ViAnToan` | Lớp L3B · track T5 Ví điện tử · nhóm ViAnToan |
 
 **Bốn phần đầu bắt buộc đúng.** Lớp là `L3A` hoặc `L3B`; track là `T1` đến `T5`, đúng track nhóm đã nhận.
@@ -115,16 +115,16 @@ Nộp **link repo** trước **23:59 ngày 12/11/2026** (lớp L3A) · trước 
 
 Tổng **100 điểm + tối đa 8 điểm bonus**. Chi tiết từng ý điểm: `04-rubric.md`.
 
-| Khối | Điểm | Chấm trên |
-|---|---|---|
-| R1 · Lát cắt & phạm vi | 5 | `spec.md` §1 |
-| R2 · Kịch bản rủi ro | 10 | `spec.md` §2 |
-| R3 · Khi AI sai | 25 | `spec.md` §3 |
-| R4 · Mức tự chủ | 25 | `spec.md` §4 |
-| R5 · Prototype | 25 | `spec.md` §5 + `prototype/` + demo |
-| R6 · Tốt là gì | 5 | `spec.md` §6 |
-| R7 · Demo & phân công | 5 | demo |
-| **Bonus** | **+8** | xung phong demo trước lớp · prototype có lời gọi AI thật |
+| Khối                   | Điểm   | Chấm trên                                                |
+| ---------------------- | ------ | -------------------------------------------------------- |
+| R1 · Lát cắt & phạm vi | 5      | `spec.md` §1                                             |
+| R2 · Kịch bản rủi ro   | 10     | `spec.md` §2                                             |
+| R3 · Khi AI sai        | 25     | `spec.md` §3                                             |
+| R4 · Mức tự chủ        | 25     | `spec.md` §4                                             |
+| R5 · Prototype         | 25     | `spec.md` §5 + `prototype/` + demo                       |
+| R6 · Tốt là gì         | 5      | `spec.md` §6                                             |
+| R7 · Demo & phân công  | 5      | demo                                                     |
+| **Bonus**              | **+8** | xung phong demo trước lớp · prototype có lời gọi AI thật |
 
 **75 trên 100 điểm nằm ở R3, R4, R5** — khi AI sai, mức tự chủ, và prototype thể hiện hai thứ đó. Điểm chấm **lập luận cho từng quyết định** (đã cân nhắc gì, chọn gì, vì sao, loại gì), không chấm điền đủ ô.
 

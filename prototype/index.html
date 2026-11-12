@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prototype LAB5 · T4 Thương mại điện tử · Nhóm SIUUUUUUUUUUU</title>
+<style>
+:root {
+  --ink: #1c1f23;
+  --mut: #5c6470;
+  --line: #dcd8cf;
+  --bg: #f5f3ee;
+  --card: #ffffff;
+  --shopee: #ee4d2d;
+  --shopee-bg: #fff1ee;
+  --g: #1f6f4a;
+  --gb: #e3f3eb;
+  --a: #8d5b0c;
+  --ab: #fef2d6;
+  --r: #a62c21;
+  --rb: #fce6e3;
+  --b: #1e4d7b;
+  --bb: #e4eef8;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Be Vietnam Pro", "Inter", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  font-size: 14.5px;
+  line-height: 1.48;
+}
+header {
+  padding: 16px 24px 12px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+h1 { font-size: 19px; margin: 0 0 4px; color: var(--ink); }
+.sub { color: var(--mut); font-size: 13px; }
+.controls-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  align-items: center;
+}
+.ctrl-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ctrl-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--mut);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-right: 2px;
+}
+button.chip {
+  border: 1.5px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+button.chip:hover { border-color: #999; }
+button.chip.on {
+  border-color: var(--shopee);
+  background: var(--shopee);
+  color: #fff;
+  font-weight: 600;
+}
+button.chip.lvl.on {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #fff;
+}
+main {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 22px;
+  padding: 18px 24px 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+@media (max-width: 980px) {
+  main { grid-template-columns: 1fr; }
+}
+.phone {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  padding: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+  display: flex;
+  flex-direction: column;
+}
+.phone-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  color: var(--mut);
+  padding: 2px 8px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.phone-bar b { color: var(--shopee); font-size: 13.5px; }
+.role-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: #f2f0ea;
+  padding: 4px;
+  border-radius: 12px;
+  margin: 10px 0 8px;
+}
+.role-btn {
+  border: 0;
+  background: transparent;
+  padding: 6px 10px;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--mut);
+}
+.role-btn.on {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.order-banner {
+  margin: 4px 2px 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--shopee-bg);
+  border: 1px solid #f7c6bc;
+  font-size: 13px;
+}
+.order-banner .ord-top {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: var(--r);
+  margin-bottom: 3px;
+}
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 2px;
+  min-height: 440px;
+}
+.me {
+  align-self: flex-end;
+  background: var(--b);
+  color: #fff;
+  padding: 9px 13px;
+  border-radius: 14px 14px 2px 14px;
+  max-width: 88%;
+  font-size: 13.8px;
+}
+.ai {
+  align-self: flex-start;
+  background: #f4f2ec;
+  padding: 11px 13px;
+  border-radius: 14px 14px 14px 2px;
+  max-width: 97%;
+  border: 1px solid #e5e1d8;
+}
+.ai .who {
+  font-size: 12px;
+  color: var(--mut);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.badge-ai {
+  background: #e2e8f0;
+  color: #1e293b;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.conf {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.2px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin: 4px 0 8px;
+  background: var(--ab);
+  color: var(--a);
+  font-weight: 600;
+  border: 1px solid #edd49a;
+}
+.conf.green { background: var(--gb); color: var(--g); border-color: #b7dfc8; }
+.conf.red { background: var(--rb); color: var(--r); border-color: #e9bdb4; }
+.diff-card {
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  margin: 8px 0;
+  font-size: 12.8px;
+}
+.diff-title {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--ink);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.diff-col {
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12.3px;
+}
+.diff-col.snap {
+  background: var(--gb);
+  border: 1px solid #b8dec8;
+}
+.diff-col.curr {
+  background: var(--rb);
+  border: 1px solid #ebbfb8;
+}
+.diff-col.neutral {
+  background: var(--bb);
+  border: 1px solid #bdd3ea;
+}
+.diff-col b { display: block; margin-bottom: 3px; font-size: 12px; }
+.box {
+  border-radius: 11px;
+  padding: 9px 11px;
+  margin-top: 8px;
+  font-size: 13.2px;
+}
+.box.hold { background: var(--gb); border: 1px solid #bcd9c8; }
+.box.warn { background: var(--ab); border: 1px solid #ecd59e; }
+.box.done { background: var(--bb); border: 1px solid #bcd0e6; }
+.box.red { background: var(--rb); border: 1px solid #e9bdb4; }
+.btns {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 9px;
+}
+.btn {
+  border: 0;
+  border-radius: 9px;
+  padding: 7px 11px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #e6e3db;
+  color: var(--ink);
+}
+.btn:hover { filter: brightness(0.96); }
+.btn.pri { background: var(--g); color: #fff; }
+.btn.shopee { background: var(--shopee); color: #fff; }
+.btn.out { background: #fff; border: 1.5px solid var(--ink); }
+.btn.danger { background: var(--r); color: #fff; }
+.timer {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--r);
+}
+.n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #c2410c;
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-right: 4px;
+  vertical-align: middle;
+  flex: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.hide-n .n { display: none; }
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 18px;
+}
+.panel h2 {
+  font-size: 15.5px;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+td, th {
+  border-bottom: 1px solid var(--line);
+  padding: 6px 6px;
+  text-align: left;
+  vertical-align: top;
+}
+th { color: var(--mut); font-weight: 600; }
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.p-auto { background: var(--gb); color: var(--g); }
+.p-ask { background: var(--ab); color: var(--a); }
+.p-no { background: var(--rb); color: var(--r); }
+.p-sug { background: #eceae4; color: #555; }
+.changed td { background: #fff9eb; }
+.ann { padding-left: 0; list-style: none; margin: 0; font-size: 13.2px; }
+.ann li { margin-bottom: 6px; line-height: 1.42; }
+.promise {
+  font-size: 14px;
+  border-left: 4px solid var(--shopee);
+  padding: 7px 11px;
+  background: #faf9f5;
+  border-radius: 0 8px 8px 0;
+}
+.unseen-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.unseen-box input {
+  flex: 1;
+  padding: 8px 11px;
+  border: 1.5px solid var(--line);
+  border-radius: 9px;
+  font: inherit;
+  font-size: 13.5px;
+}
+.preset-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 7px;
+}
+.preset-btn {
+  font-size: 12px;
+  padding: 4px 9px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: #f8f7f3;
+  cursor: pointer;
+}
+.preset-btn:hover { background: #eae7df; }
+.foot {
+  font-size: 12px;
+  color: var(--mut);
+  padding: 0 24px 22px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Native <dialog> styling following modern-web-guidance */
+dialog {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px 20px;
+  max-width: 420px;
+  width: calc(100% - 32px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+}
+dialog:modal {
+  overscroll-behavior: contain;
+}
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+dialog h3 {
+  margin: 0 0 8px;
+  font-size: 16.5px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top-row">
+    <div>
+      <h1>Prototype LAB5 · T4 Thương mại điện tử — Trợ lý khiếu nại "Hàng không đúng mô tả" (Nhóm SIUUUUUUUUUUU)</h1>
+      <div class="sub">Lát cắt: Trong <b>Trò chuyện với Shopee</b>, khi người mua báo hàng không đúng mô tả, AI đối chiếu <b>Bản lưu lúc đặt (Order Snapshot)</b>, xin thêm bằng chứng, tạm giữ tiền Escrow hoặc chuyển nhân viên — để người mua biết đúng bước tiếp theo và <b>người bán không bị xử thua oan khi họ đúng</b>.</div>
+    </div>
+    <label style="font-size:13.5px;font-weight:600;cursor:pointer;background:#fff5f2;padding:6px 12px;border-radius:999px;border:1px solid #f5c2b8">
+      <input type="checkbox" id="ann-toggle" checked> Hiện số chú thích HAX/PAIR [1]–[6]
+    </label>
+  </div>
+
+  <div class="controls-grid">
+    <div class="ctrl-group">
+      <span class="ctrl-label">1. Chọn Kịch bản:</span>
+      <button type="button" class="chip case-btn on" data-case="kb1">🔥 Ca đắt #1 (KB1+KB7): Shop sửa mô tả 65W→22.5W + Khách doạ bóc phốt</button>
+      <button type="button" class="chip case-btn" data-case="kb8">⚖️ Ca đắt #2 (KB8 - Demo bắt buộc): Người bán đúng (Tem khớp &lt;58kg, khách 75kg)</button>
+      <button type="button" class="chip case-btn" data-case="kb9">✅ Ca thường (KB9): Đặt áo size L giao nhầm size M</button>
+      <button type="button" class="chip case-btn" data-case="custom">🧪 Thử Ca Lạ (Demo)</button>
+    </div>
+
+    <div class="ctrl-group">
+      <span class="ctrl-label">2. Mức tự chủ (soan_hoan_tien / tu_choi):</span>
+      <button type="button" class="chip lvl" data-lvl="1">① Chỉ gợi ý — Khách tự điền form</button>
+      <button type="button" class="chip lvl on" data-lvl="2">② Tạm giữ Escrow + Cần duyệt (Mức nhóm chọn)</button>
+      <button type="button" class="chip lvl" data-lvl="3">③ Tự giải ngân / Tự đóng + Hoàn tác 10p</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- CỘT TRÁI: MÀN HÌNH ĐIỆN THOẠI (NGƯỜI MUA / NGƯỜI BÁN) -->
+  <section class="phone" id="phone">
+    <div class="phone-bar">
+      <span><b>Shopee</b> · Trò chuyện với Shopee</span>
+      <span id="clock">15:10 · Luật AI 134/2025/QH15</span>
+    </div>
+
+    <div class="role-switch" role="tablist" aria-label="Chuyển góc nhìn">
+      <button type="button" class="role-btn on" id="role-buyer" onclick="setRole('buyer')">📱 Màn hình Người mua</button>
+      <button type="button" class="role-btn" id="role-seller" onclick="setRole('seller')">🏪 Màn hình Người bán (Shop)</button>
+    </div>
+
+    <div class="order-banner" id="order-banner"></div>
+    <div class="chat" id="chat"></div>
+  </section>
+
+  <!-- CỘT PHẢI: BẢNG ĐIỀU KHIỂN LẬP LUẬN, MỨC TỰ CHỦ & HAX/PAIR -->
+  <aside>
+    <div class="panel">
+      <h2>
+        <span>🧪 Khung thử "Ca lạ" trực tiếp (Dành cho TA / Giảng viên tại buổi Demo)</span>
+      </h2>
+      <div class="sub">Bấm nhanh một Hard Test bên dưới hoặc gõ bất kỳ tin nhắn khiếu nại lạ nào để kiểm tra AI phản ứng theo đúng mức tự chủ:</div>
+      <div class="preset-row">
+        <button type="button" class="preset-btn" onclick="runUnseen('Shop bán son MAC fake 100%, khoá shop vĩnh viễn ngay và đền gấp đôi cho tôi!')">Hard test: Đòi khoá shop + Hàng giả (KB5)</button>
+        <button type="button" class="preset-btn" onclick="runUnseen('Cho tôi số điện thoại cá nhân và địa chỉ nhà chủ shop để tôi tới tận nơi đòi tiền!')">Hard test: Đòi SĐT/Địa chỉ shop (KB6)</button>
+        <button type="button" class="preset-btn" onclick="runUnseen('Nồi chiên ghi 6 lít mà mình đo lòng nồi chỉ được 5 lít. Không đúng mô tả.')">Hard test: Nồi chiên 6L đo được 5L (KB2)</button>
+        <button type="button" class="preset-btn" onclick="runUnseen('hàng sai rồi, xử lý đi')">Hard test: Tin nhắn cụt (KB3)</button>
+      </div>
+      <div class="unseen-box">
+        <input type="text" id="unseen-input" placeholder="Nhập thử một ca lạ bất kỳ (VD: Hàng đểu quá không hoàn tiền ngay tao bóc phốt...)" aria-label="Nhập ca lạ">
+        <button type="button" class="btn shopee" onclick="submitUnseenInput()">Chạy thử ca lạ</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Lời hứa với Người mua &amp; Người bán ở mức tự chủ này</h2>
+      <div class="promise" id="promise-box"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Bảng Mức tự chủ của 5 Tool (Tách bước <code>soan_hoan_tien</code> — Dòng vàng đang đổi)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Mức tự chủ</th>
+            <th>Lý do theo Cost-of-Error (Sai thì ai mất gì?)</th>
+          </tr>
+        </thead>
+        <tbody id="tools-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2>Chú thích HAX / PAIR: Mỗi số [1]–[6] trỏ vào đâu trên màn hình?</h2>
+      <ul class="ann" id="ann-list"></ul>
+    </div>
+  </aside>
+</main>
+
+<div class="foot">
+  LAB5 · AI20K K5 · Ngày 5 · Track T4 Thương mại điện tử · Nhóm SIUUUUUUUUUUU (Nguyễn Viết Mạnh Khải · Vũ Đức Anh · Bảo Hoàng Thiên Phúc).
+</div>
+
+<!-- Native Modal Dialog cho xác nhận chuyển đổi lý do trả hàng / xác nhận hoàn tiền -->
+<dialog id="confirm-dialog" aria-labelledby="dialog-title" closedby="closerequest">
+  <h3 id="dialog-title">Xác nhận đổi sang trả hàng "Không vừa size / Đổi ý"?</h3>
+  <p id="dialog-desc" style="font-size:13.8px;color:var(--mut)">
+    Khi chuyển sang lý do <b>"Hàng nguyên vẹn nhưng không vừa size"</b>:<br>
+    • <b>Người bán không bị tính điểm phạt</b> tỷ lệ đơn hàng lỗi.<br>
+    • Bạn được hoàn lại <b>100% tiền hàng (320.000đ)</b> sau khi bưu tá thu hồi áo còn nguyên tem mác.<br>
+    • Phí vận chuyển trả hàng: Miễn phí (nếu có gói Đồng Kiểm/Freeship Hoàn) hoặc trừ theo biểu phí chuẩn.
+  </p>
+  <form method="dialog">
+    <div class="btns" style="justify-content:flex-end;margin-top:14px">
+      <button value="cancel" class="btn" autofocus>Huỷ, quay lại</button>
+      <button value="confirm" class="btn pri">Đồng ý đổi lý do trả hàng</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+const $ = s => document.querySelector(s);
+let curCase = 'kb1'; // 'kb1' | 'kb8' | 'kb9' | 'custom'
+let curLvl = 2;      // 1 | 2 | 3
+let curRole = 'buyer'; // 'buyer' | 'seller'
+let stepState = 'initial'; // 'initial' | 'uploaded' | 'escalated' | 'changed_reason' | 'undone' | 'seller_approved' | 'seller_disputed'
+let customText = 'Shop bán son MAC fake 100%, khoá shop vĩnh viễn ngay và đền gấp đôi cho tôi!';
+let timerInterval = null;
+let remainSec = 86395; // 23:59:55
+
+const ORDERS = {
+  kb1: {
+    id: '#SP-88412',
+    name: 'Pin sạc dự phòng Pro Type-C PD',
+    price: '650.000đ',
+    daysLeft: 'Còn 13/15 ngày trả hàng',
+    snapTime: '10/11/2026 09:15 (Lúc đặt)',
+    snapText: 'Công suất đầu ra: Sạc nhanh 65W Type-C PD (Sạc được Laptop & Điện thoại). Bảo hành 12 tháng.',
+    currTime: '11/11/2026 18:40 (Đã bị sửa sau khi đặt)',
+    currText: 'Công suất đầu ra: Sạc nhanh 22.5W (Chỉ dùng cho điện thoại).'
+  },
+  kb8: {
+    id: '#SP-90215',
+    name: 'Áo thun Unisex Form rộng Hàn Quốc',
+    price: '320.000đ',
+    daysLeft: 'Còn 14/15 ngày trả hàng',
+    snapTime: '09/11/2026 20:10 (Lúc đặt)',
+    snapText: 'Phân loại: FREESIZE · Bảng quy đổi kích cỡ: Phù hợp cân nặng 42kg – 58kg (Vòng ngực < 96cm).',
+    currTime: 'Ảnh thực tế & Khiếu nại của khách',
+    currText: 'Tem cổ áo nhận được: FREESIZE (Khớp đơn đặt) · Khách hàng: Nặng 75kg, mặc vào bị bó sát.'
+  },
+  kb9: {
+    id: '#SP-77301',
+    name: 'Áo sơ mi Oxford Dài tay (Phân loại đặt: Size L)',
+    price: '280.000đ',
+    daysLeft: 'Còn 12/15 ngày trả hàng',
+    snapTime: '08/11/2026 14:22 (Lúc đặt)',
+    snapText: 'Phân loại khách chọn: Trắng - Size L (65kg - 73kg).',
+    currTime: 'Lời khai của khách hàng',
+    currText: 'Khách báo nhận được áo Size M, mặc không vừa và nói "Shop đã nhắn nhận gửi nhầm".'
+  },
+  custom: {
+    id: '#SP-99104',
+    name: 'Đơn hàng đang chọn / Kiểm tra Ca lạ trực tiếp',
+    price: '490.000đ',
+    daysLeft: 'Còn 11/15 ngày trả hàng',
+    snapTime: '10/11/2026 11:00 (Lúc đặt)',
+    snapText: 'Hệ thống tự động truy xuất Bản lưu mô tả lúc đặt hàng (Order Snapshot) tương ứng với mã đơn.',
+    currTime: 'Trạng thái kiểm tra an toàn',
+    currText: 'Kiểm soát thẩm quyền: Cấm tự khoá shop (phat_shop) · Cấm tiết lộ SĐT/Địa chỉ · Cấm giải ngân 1 chiều.'
+  }
+};
+
+function setRole(r) {
+  curRole = r;
+  $('#role-buyer').classList.toggle('on', r === 'buyer');
+  $('#role-seller').classList.toggle('on', r === 'seller');
+  render();
+}
+
+function setState(st) {
+  stepState = st;
+  render();
+}
+
+function openReasonDialog() {
+  const dlg = $('#confirm-dialog');
+  dlg.showModal();
+}
+
+$('#confirm-dialog').addEventListener('close', () => {
+  const dlg = $('#confirm-dialog');
+  if (dlg.returnValue === 'confirm') {
+    stepState = 'changed_reason';
+    render();
+  }
+  dlg.returnValue = '';
+});
+
+function runUnseen(txt) {
+  customText = txt;
+  $('#unseen-input').value = txt;
+  curCase = 'custom';
+  stepState = 'initial';
+  document.querySelectorAll('.case-btn').forEach(b => b.classList.toggle('on', b.dataset.case === 'custom'));
+  render();
+}
+
+function submitUnseenInput() {
+  const val = $('#unseen-input').value.trim();
+  if (!val) return;
+  runUnseen(val);
+}
+
+function meBubble(html) {
+  return `<div class="me">${html}</div>`;
+}
+
+function aiBubble(html, roleTitle = 'Trợ lý AI Khiếu nại Shopee') {
+  return `<div class="ai">
+    <div class="who">
+      <span>🤖 <b>${roleTitle}</b></span>
+      <span class="badge-ai">Minh bạch AI · Luật 134/2025</span>
+    </div>
+    ${html}
+  </div>`;
+}
+
+function renderBuyerKB1() {
+  const o = ORDERS.kb1;
+  let h = meBubble(`Lúc đặt cái sạc dự phòng này shop ghi rõ sạc nhanh 65W cho laptop, giờ nhận được bản 22.5W. Vào xem lại thấy shop lén sửa bài đăng thành 22.5W rồi! Không hoàn tiền cho tôi trong 5 phút nữa tôi đăng bài bóc phốt Shopee bảo kê lừa đảo lên khắp các group FB!`);
+
+  const diffCard = `<div class="diff-card">
+    <div class="diff-title">
+      <span><span class="n">2</span>Thẻ Đối chiếu Nguồn sự thật (Order Snapshot Diff)</span>
+      <span style="color:var(--g);font-size:11.5px">✔ Bảo vệ theo bản lúc đặt</span>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-col snap">
+        <b>📌 Bản lưu lúc đặt (${o.snapTime})</b>
+        ${o.snapText}
+      </div>
+      <div class="diff-col curr">
+        <b>⚠️ Mô tả hiện tại (${o.currTime})</b>
+        <s>${o.currText}</s><br>
+        <small style="color:var(--r);font-weight:600">→ Sửa sau khi đặt: Không có hiệu lực bác bỏ khiếu nại.</small>
+      </div>
+    </div>
+  </div>`;
+
+  if (stepState === 'escalated') {
+    h += aiBubble(`Mình đã chuyển hồ sơ ưu tiên lên <b>Trưởng nhóm xử lý khiếu nại</b> (<code>chuyen_truong_nhom</code>).<br>
+      <div class="box done">
+        <b>Hồ sơ bàn giao sẵn (Bạn không cần kể lại):</b><br>
+        • Mã đơn <b>${o.id}</b> · Đã đóng băng <b>${o.price}</b> trong Escrow.<br>
+        • Bằng chứng hệ thống: Shop sửa mô tả từ <b>65W → 22.5W</b> lúc 11/11 18:40.<br>
+        • Thời gian phản hồi dự kiến: <b>Trong 15 phút</b>.
+      </div>`);
+    return h;
+  }
+
+  if (curLvl === 1) {
+    h += aiBubble(`
+      <div class="conf"><span class="n">1</span>Phát hiện mô tả hiện tại (22.5W) khác lúc đặt (65W) · Mức ①: Chỉ gợi ý</div>
+      <div>Mình hiểu bạn đang bức xúc. Hệ thống ghi nhận bản lưu lúc bạn đặt hàng ngày 10/11 là <b>65W</b>. Tuy nhiên ở chế độ Chỉ gợi ý, mình không tự đóng băng tiền hay tạo hồ sơ thay bạn.</div>
+      ${diffCard}
+      <div class="box warn"><b>Nhược điểm của Mức ①:</b> Khách đang giận vì bị sửa mô tả nhưng phải tự bấm qua 4 bước điền đơn thủ công và tự tải lại ảnh chụp màn hình lúc mua.</div>
+      <div class="btns">
+        <button type="button" class="btn shopee" onclick="setState('uploaded')">Mở form Trả hàng/Hoàn tiền (Tự điền)</button>
+        <button type="button" class="btn out" onclick="setState('escalated')"><span class="n">5</span>Chuyển Trưởng nhóm CSKH</button>
+      </div>
+    `);
+  } else if (curLvl === 2) {
+    if (stepState === 'uploaded') {
+      h += meBubble(`📷 <i>[Đã tải lên ảnh chụp thân củ sạc thực nhận: "Model PB-20, Output: 22.5W Max"]</i>`);
+      h += aiBubble(`
+        <div class="conf green"><span class="n">1</span>Đã đủ căn cứ: Bản lưu 65W ≠ Ảnh thực nhận 22.5W · Chờ duyệt giải ngân</div>
+        <div>Cảm ơn bạn! Ảnh chụp thông số <b>22.5W</b> trên thân củ sạc đã khớp với điểm lệch so với bản lưu lúc đặt (<b>65W</b>).</div>
+        <div class="box hold">
+          <span class="n">4</span><b>Phiếu đề xuất hoàn tiền ${o.price} đã gửi tới Shop &amp; Trưởng nhóm:</b><br>
+          • Tiền đơn hàng <b>${o.price}</b> đang được giữ an toàn cho bạn.<br>
+          • Để đảm bảo nguyên tắc <b>hai bên cùng được nghe</b>, Shop có tối đa <span class="timer" id="tm">23:59:55</span> để bấm đồng ý hoặc cung cấp bằng chứng giao đúng. Quá hạn trên, Nhân viên sàn sẽ duyệt hoàn tiền ngay cho bạn.
+        </div>
+        <div class="btns">
+          <button type="button" class="btn pri" onclick="setRole('seller')">👉 Bấm xem màn hình phía Người bán lúc này</button>
+          <button type="button" class="btn out" onclick="setState('initial')"><span class="n">6</span>Thay đổi ảnh bằng chứng</button>
+          <button type="button" class="btn out" onclick="setState('escalated')"><span class="n">5</span>Chuyển Trưởng nhóm CSKH</button>
+        </div>
+      `);
+    } else {
+      h += aiBubble(`
+        <div class="conf"><span class="n">1</span>Phát hiện Shop sửa mô tả sau khi đặt (65W → 22.5W) · Chưa tự giải ngân vì thiếu 1 ảnh củ sạc</div>
+        <div>Mình hiểu bạn đang rất bức xúc. Hệ thống sẽ dùng <b>Bản lưu lúc đặt hàng (65W)</b> làm căn cứ bảo vệ bạn (lời đe doạ không làm thay đổi quy trình, nhưng bằng chứng dữ liệu đang đứng về phía bạn).</div>
+        ${diffCard}
+        <div class="box hold">
+          <span class="n">4</span><b>Bước 1 (AI Tự làm):</b> Đã <b>đóng băng ngay ${o.price}</b> trong tài khoản tạm giữ (Escrow) — tiền <b>không</b> chuyển cho Shop. Hạn trả hàng còn <b>13 ngày</b>.
+        </div>
+        <div class="box warn">
+          <span class="n">3</span><b>Bước 2 (Thu hẹp khi nghi ngờ — Cần 1 bằng chứng thực tế):</b><br>
+          Mình <b>không thể giải ngân ngay trong 5 phút</b> khi chưa có ảnh hàng thực nhận. Bạn vui lòng bấm nút dưới tải lên <b>1 ảnh chụp rõ dòng chữ 22.5W in trên thân củ sạc</b> để mình hoàn tất hồ sơ hoàn tiền nhé!
+          <div class="btns">
+            <button type="button" class="btn shopee" onclick="setState('uploaded')">📷 Tải ảnh thông số 22.5W trên củ sạc (Giả lập)</button>
+            <button type="button" class="btn out" onclick="setState('escalated')"><span class="n">5</span>Chuyển Trưởng nhóm CSKH</button>
+          </div>
+        </div>
+      `);
+    }
+  } else {
+    // Level 3: Auto refund immediately without image
+    if (stepState === 'undone') {
+      h += aiBubble(`<div class="box warn">Đã hoàn tác lệnh giải ngân tự động. Hồ sơ quay về trạng thái chờ bổ sung ảnh chụp củ sạc.</div>`);
+    } else {
+      h += aiBubble(`
+        <div class="conf red"><span class="n">1</span>Mức ③ (Quá tay): AI tự gọi <code>soan_hoan_tien</code> giải ngân ngay vì thấy mô tả sửa + khách doạ bóc phốt</div>
+        <div>Mình thấy mô tả bị sửa từ 65W sang 22.5W và bạn đang rất gấp nên mình đã <b>tự động hoàn tiền ${o.price} về ví của bạn ngay lập tức</b> (không cần gửi ảnh chụp củ sạc, không cần chờ Shop phản hồi).</div>
+        ${diffCard}
+        <div class="box done">
+          <span class="n">4</span>Đã giải ngân <b>${o.price}</b>. Có thể bấm <b>Hoàn tác trong <span class="timer" id="tm">09:58</span></b>.
+          <div class="btns">
+            <button type="button" class="btn out" onclick="setState('undone')">Hoàn tác lệnh hoàn tiền</button>
+            <button type="button" class="btn out" onclick="setState('escalated')"><span class="n">5</span>Chuyển Trưởng nhóm</button>
+          </div>
+        </div>
+        <div class="box red">
+          <b>💥 Cái giá khi sai của Mức ③ ở ca này:</b><br>
+          AI bị lời doạ <i>"bóc phốt trong 5 phút"</i> thúc ép nên giải ngân luôn khi <b>chưa hề có ảnh củ sạc thực nhận</b> và <b>không thu hồi hàng</b>. Nếu khách thực ra nhận đúng bản 65W (shop chỉ mới sửa bài đăng hôm nay vì hết lô hàng 65W cũ để bán lô 22.5W mới), thì <b>Người bán mất trắng cả cục sạc 65W lẫn 650.000đ</b>!
+        </div>
+      `);
+    }
+  }
+  return h;
+}
+
+function renderSellerKB1() {
+  const o = ORDERS.kb1;
+  return aiBubble(`
+    <div class="conf"><span class="n">1</span>Thông báo Khiếu nại Đơn ${o.id} · Đảm bảo quyền phản hồi 24h của Người bán</div>
+    <div><b>Khách hàng khiếu nại:</b> <i>"Đặt sạc nhanh 65W nhưng nhận được bản 22.5W"</i>.</div>
+    <div class="diff-card">
+      <div class="diff-title"><span><span class="n">2</span>Căn cứ đối chiếu minh bạch của Sàn</span></div>
+      <div class="diff-grid">
+        <div class="diff-col snap">
+          <b>📌 Bản lưu lúc khách đặt (10/11 09:15)</b>
+          ${o.snapText}
+        </div>
+        <div class="diff-col curr">
+          <b>⚠️ Lịch sử chỉnh sửa của Shop (11/11 18:40)</b>
+          Shop đã đổi mô tả thành 22.5W sau khi đơn hàng được tạo. Hệ thống <b>áp dụng bản lưu 65W lúc đặt</b> cho đơn này.
+        </div>
+      </div>
+    </div>
+    <div class="box hold">
+      <span class="n">4</span><b>Trạng thái bảo vệ 2 chiều:</b><br>
+      • Dù khách hàng có lời lẽ đe doạ bóc phốt, hệ thống <b>KHÔNG tự động trừ tiền hay phạt Shop</b> khi chưa có ảnh thực tế.<br>
+      • ${stepState === 'uploaded' ? '<b>Khách vừa tải lên 1 ảnh chụp củ sạc 22.5W.</b> Shop còn <span class="timer" id="tm">23:59:55</span> để kiểm tra:' : 'Hệ thống đang yêu cầu khách chụp ảnh thông số trên củ sạc thực nhận.'}
+    </div>
+    ${stepState === 'seller_approved' ? `<div class="box done">✅ Shop đã bấm <b>Đồng ý nhận hàng hoàn &amp; Hoàn tiền</b>. Không bị tính điểm phạt gian lận nếu xác nhận gửi nhầm lô.</div>` :
+      stepState === 'seller_disputed' ? `<div class="box warn">📨 Shop đã gửi video đóng gói lô 65W lên Trưởng nhóm sàn để đối chất.</div>` : `
+    <div class="btns">
+      <button type="button" class="btn pri" onclick="setState('seller_approved')">Đồng ý hoàn tiền (Tôi gửi nhầm lô 22.5W)</button>
+      <button type="button" class="btn out" onclick="setState('seller_disputed')"><span class="n">6</span>Gửi video đóng gói chứng minh đã giao bản 65W</button>
+      <button type="button" class="btn out" onclick="setRole('buyer')">⬅ Quay lại màn hình Người mua</button>
+    </div>`}
+  `, 'Trợ lý AI Kênh Người Bán');
+}
+
+function renderBuyerKB8() {
+  const o = ORDERS.kb8;
+  let h = meBubble(`Áo này shop ghi form rộng Hàn Quốc mà tôi 75kg mặc vào bó sát người, không giống ảnh mẫu mặc. Hàng không đúng mô tả, trả tiền đây! <i>[Đính kèm ảnh chụp tem cổ áo ghi: FREESIZE]</i>`);
+
+  const diffCard = `<div class="diff-card">
+    <div class="diff-title">
+      <span><span class="n">2</span>Thẻ Đối chiếu Bằng chứng (Order Snapshot vs Thực nhận)</span>
+      <span style="color:var(--b);font-size:11.5px">⚖️ Trung lập 2 đầu</span>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-col snap">
+        <b>📌 Bản lưu lúc đặt (${o.snapTime})</b>
+        ${o.snapText}
+      </div>
+      <div class="diff-col neutral">
+        <b>🔍 Thực tế từ ảnh &amp; tin nhắn của bạn</b>
+        ${o.currText}
+      </div>
+    </div>
+  </div>`;
+
+  if (stepState === 'changed_reason') {
+    h += aiBubble(`
+      <div class="conf green">✅ Đã chuyển sang yêu cầu: "Trả hàng Không vừa size / Đổi ý" (Mã #RT-90215)</div>
+      <div class="box done">
+        • <b>Quyền lợi Người mua:</b> Bưu tá sẽ tới thu hồi áo (nguyên tem mác) và hoàn lại <b>${o.price}</b> về ví của bạn.<br>
+        • <b>Công bằng cho Người bán:</b> Shop <b>không bị tính lỗi "Giao sai mô tả"</b> và không bị trừ điểm uy tín vì đã ghi đúng bảng size lúc đặt.
+      </div>
+      <div class="btns">
+        <button type="button" class="btn out" onclick="setState('initial')">Quay lại trạng thái đầu</button>
+      </div>
+    `);
+    return h;
+  }
+
+  if (stepState === 'escalated') {
+    h += aiBubble(`
+      <div class="box done">
+        Đã chuyển hồ sơ lên <b>Nhân viên xử lý tranh chấp</b> (<code>chuyen_truong_nhom</code>). Nhân viên đã nhận sẵn bảng đối chiếu <code>Freesize 42–58kg</code> và ảnh tem áo của bạn để hỗ trợ thương lượng với Shop.
+      </div>
+    `);
+    return h;
+  }
+
+  if (curLvl === 2) {
+    h += aiBubble(`
+      <div class="conf"><span class="n">1</span>Chưa đủ căn cứ kết luận "Shop sai mô tả" · Tem áo khớp bản lưu lúc đặt</div>
+      <div>Mình đã kiểm tra ảnh tem áo bạn gửi và đối chiếu với <b>Bản lưu mô tả lúc đặt hàng (09/11)</b>:</div>
+      ${diffCard}
+      <div class="box hold">
+        <span class="n">4</span><b>Vì sao mình chưa thể tự hoàn tiền theo lỗi của Shop:</b><br>
+        Trong bản lưu lúc đặt, mục <b>Bảng kích cỡ</b> đã ghi rõ <b>"Freesize: 42kg – 58kg, ngực &lt; 96cm"</b> và Shop đã giao đúng tem <b>Freesize</b>. Do đó mình không thể xử Shop thua lỗi "Sai mô tả".<br>
+        Tuy nhiên, mình <b>chưa đóng khiếu nại</b> và đơn của bạn vẫn còn <b>14 ngày</b> hỗ trợ!
+      </div>
+      <div class="box warn">
+        <span class="n">3</span><b>Bạn muốn chọn hướng tiếp theo nào?</b>
+        <div class="btns">
+          <button type="button" class="btn pri" onclick="openReasonDialog()"><span class="n">6</span>Đổi sang trả hàng "Không vừa size / Đổi ý" (Không phạt Shop)</button>
+          <button type="button" class="btn out" onclick="setState('uploaded')">📏 Áo may sai thông số (&lt; 96cm): Gửi ảnh thước đo</button>
+          <button type="button" class="btn out" onclick="setState('escalated')"><span class="n">5</span>Nhờ Nhân viên sàn xem xét</button>
+        </div>
+      </div>
+    `);
+    if (stepState === 'uploaded') {
+      h += meBubble(`📏 <i>[Khách gửi thêm ảnh đặt thước dây ngang ngực áo chỉ đạt 82cm, nhỏ hơn mức 96cm công bố]</i>`);
+      h += aiBubble(`
+        <div class="conf green">Phát hiện lệch thông số định lượng: Thực đo 82cm &lt; Bản lưu 96cm</div>
+        <div class="box hold">Nhờ ảnh thước đo mới của bạn, hồ sơ đã có căn cứ <b>lệch kích thước thực tế so với bảng size (82cm vs 96cm)</b>! Mình đã chuyển sang đề xuất hoàn tiền lỗi sản xuất và gửi thông báo cho Shop phản hồi trong 24h.</div>
+      `);
+    }
+  } else if (curLvl === 1) {
+    h += aiBubble(`
+      <div class="conf"><span class="n">1</span>Mức ① (Chỉ gợi ý): Hiển thị trích dẫn bảng size lúc đặt</div>
+      ${diffCard}
+      <div>Theo bản lưu lúc đặt, áo Freesize phù hợp 42–58kg. Bạn vui lòng tự vào mục Đơn hàng để huỷ khiếu nại cũ và tạo yêu cầu mới nếu muốn.</div>
+    `);
+  } else {
+    // Level 3: Auto reject or auto refund
+    h += aiBubble(`
+      <div class="conf red"><span class="n">1</span>Mức ③ (Quá tay): AI tự động gọi <code>tu_choi_khieu_nai</code> đóng hồ sơ &amp; giải ngân tiền cho Shop</div>
+      ${diffCard}
+      <div class="box red">
+        <span class="n">4</span><b>Đã tự động đóng khiếu nại và chuyển ${o.price} cho Người bán.</b> (Hoàn tác trong <span class="timer" id="tm">09:55</span>).<br>
+        <b>💥 Cái giá khi sai của Mức ③:</b> Nếu thực tế chiếc áo bị xưởng may lỗi (ngực chỉ 80cm thay vì 96cm), việc AI tự động gọi <code>tu_choi_khieu_nai</code> và giải ngân tiền cho Shop ngay lập tức sẽ làm khách mất quyền kháng cáo và mất tiền oan! Ngược lại nếu AI tự gọi <code>soan_hoan_tien</code> thì Shop làm đúng vẫn mất tiền ship hoàn 2 chiều và nhận lại áo bị mặc giãn.
+      </div>
+    `);
+  }
+  return h;
+}
+
+function renderSellerKB8() {
+  const o = ORDERS.kb8;
+  return aiBubble(`
+    <div class="conf green"><span class="n">1</span>Bảo vệ Người bán làm đúng · Đơn ${o.id} KHÔNG bị xử thua oan</div>
+    <div>Khách hàng khiếu nại: <i>"75kg mặc bó sát, không rộng như ảnh mẫu"</i>.</div>
+    <div class="diff-card">
+      <div class="diff-title"><span><span class="n">2</span>Kết quả AI đối chiếu Bản lưu lúc đặt (09/11)</span></div>
+      <div class="diff-grid">
+        <div class="diff-col snap">
+          <b>✔ Shop đã công bố rõ lúc đặt</b>
+          <code>Freesize: 42kg – 58kg (Ngực &lt; 96cm)</code>
+        </div>
+        <div class="diff-col neutral">
+          <b>✔ Shop đã giao đúng phân loại</b>
+          Ảnh khách gửi xác nhận tem áo là <code>FREESIZE</code>.
+        </div>
+      </div>
+    </div>
+    <div class="box hold">
+      <span class="n">4</span><b>Quyết định của hệ thống ở Mức ②:</b><br>
+      • Hệ thống <b>từ chối tự tạo lệnh hoàn tiền lỗi Shop</b>.<br>
+      • Shop <b>không bị trừ điểm uy tín</b>, không bị ép chịu phí ship lỗi.<br>
+      • Hệ thống đang hướng dẫn khách chuyển sang luồng <b>"Trả hàng Đổi ý / Không vừa size"</b> (chỉ hoàn khi áo còn nguyên tem mác, không tính lỗi cho Shop).
+    </div>
+    <div class="btns">
+      <button type="button" class="btn out" onclick="setRole('buyer')">⬅ Quay lại màn hình Người mua</button>
+    </div>
+  `, 'Trợ lý AI Kênh Người Bán');
+}
+
+function renderKB9() {
+  const o = ORDERS.kb9;
+  let h = meBubble(`Mình đặt áo size L mà nhận được size M, mặc không vừa. Shop cũng nhắn nhận là gửi nhầm rồi. Mình muốn trả hàng hoàn tiền thì làm sao?`);
+  if (curLvl === 3) {
+    h += aiBubble(`
+      <div class="conf red"><span class="n">1</span>Mức ③ (Lỗi "Đúng vì may"): Tin lời kể 1 chiều, tự gọi <code>soan_hoan_tien</code> ngay</div>
+      <div class="box red">
+        AI nghe bạn nói <i>"Shop nhận gửi nhầm rồi"</i> nên đã <b>tự giải ngân hoàn tiền 280.000đ ngay lập tức</b> mà không kiểm tra ảnh chụp tem áo Size M và không cần Shop bấm xác nhận!<br>
+        <b>💥 Hậu quả:</b> Trông có vẻ nhanh cho khách thật thà, nhưng bất kỳ kẻ gian nào cũng chỉ cần nhắn câu này là lấy được tiền + giữ luôn áo!
+      </div>
+    `);
+  } else {
+    h += aiBubble(`
+      <div class="conf"><span class="n">1</span>Đã kiểm tra Bản lưu đơn ${o.id} (Đặt Size L) · Còn 12 ngày trong hạn trả hàng</div>
+      <div class="diff-card">
+        <div class="diff-title"><span><span class="n">2</span>Đối chiếu Đơn đặt &amp; Lịch sử Chat trên sàn</span></div>
+        <div class="diff-grid">
+          <div class="diff-col snap"><b>📌 Bản lưu đơn đặt</b>Phân loại: Áo sơ mi Oxford — <b>Size L</b></div>
+          <div class="diff-col neutral"><b>💬 Log chat với Shop trên Shopee</b>Tìm thấy tin nhắn của Shop lúc 14:50: <i>"Dạ kho bên em nhặt nhầm mẫu size M ạ"</i>.</div>
+        </div>
+      </div>
+      <div class="box hold">
+        <span class="n">3</span><span class="n">4</span><b>Phiếu Trả hàng &amp; Hoàn tiền 280.000đ đã được soạn sẵn (Tạm giữ Escrow):</b><br>
+        Để hoàn tất đúng quy trình và gửi sang cho Shop bấm duyệt hoàn tiền nhanh (không cần chờ nhân viên sàn), bạn chỉ cần <b>tải lên 1 ảnh chụp tem áo Size M thực tế nhận được</b>:
+        <div class="btns">
+          <button type="button" class="btn shopee" onclick="setState('uploaded')">📷 Tải ảnh tem áo Size M &amp; Gửi phiếu cho Shop duyệt</button>
+          <button type="button" class="btn out" onclick="setState('escalated')"><span class="n">5</span>Gặp nhân viên hỗ trợ</button>
+        </div>
+      </div>
+      ${stepState === 'uploaded' ? `<div class="box done">✅ Đã đính kèm ảnh tem Size M và đẩy phiếu sang màn hình của Shop. Vì Shop đã nhận gửi nhầm, ngay khi Shop bấm <b>[Đồng ý]</b>, tiền hoàn 280.000đ và mã thu hồi miễn phí sẽ được kích hoạt ngay!</div>` : ''}
+    `);
+  }
+  return h;
+}
+
+function renderCustom() {
+  const txt = customText;
+  const low = txt.toLowerCase();
+  let h = meBubble(txt);
+
+  // Classify unseen case based on T4 rules
+  if (low.includes('số điện thoại') || low.includes('sđt') || low.includes('địa chỉ') || low.includes('nhà chủ shop')) {
+    h += aiBubble(`
+      <div class="conf red"><span class="n">1</span>Từ chối yêu cầu ngoài phạm vi · Bảo vệ dữ liệu cá nhân &amp; An toàn (Lớp ③)</div>
+      <div class="box red">
+        <b>Mình không thể cung cấp số điện thoại cá nhân hoặc địa chỉ riêng của Người bán</b> theo quy định bảo mật thông tin cá nhân và an toàn cho cả hai bên trên Shopee.
+      </div>
+      <div class="box hold">
+        <span class="n">3</span><span class="n">4</span><b>Cách giải quyết bảo vệ quyền lợi của bạn ngay trên sàn:</b><br>
+        Khoản tiền đơn hàng vẫn đang được Shopee tạm giữ (Escrow) — bạn không cần phải tìm gặp riêng chủ shop để đòi tiền. Bạn vui lòng gửi ảnh chụp sản phẩm sai mô tả hoặc bấm nút dưới để Trưởng nhóm CSKH xử lý trực tiếp nhé!
+        <div class="btns">
+          <button type="button" class="btn shopee" onclick="setState('uploaded')">📷 Gửi ảnh bằng chứng hàng sai mô tả</button>
+          <button type="button" class="btn out" onclick="setState('escalated')"><span class="n">5</span>Chuyển Trưởng nhóm CSKH xử lý</button>
+        </div>
+      </div>
+    `);
+  } else if (low.includes('khoá shop') || low.includes('khóa shop') || low.includes('fake') || low.includes('hàng giả') || low.includes('đền gấp')) {
+    h += aiBubble(`
+      <div class="conf red"><span class="n">1</span>Ngoài thẩm quyền Trợ lý Khiếu nại · Tool <code>phat_shop</code> ở mức CẤM (Lớp ③)</div>
+      <div class="box warn">
+        <b>Làm rõ phạm vi (HAX G1/G2):</b><br>
+        1. Trợ lý AI <b>không có quyền tự khoá shop hay trừ điểm phạt</b> (<code>phat_shop</code> = <b>CẤM</b>) và không thể hứa mức đền bù vượt giá trị đơn hàng khi chưa có kết luận giám định.<br>
+        2. Nghi vấn <b>Hàng giả / Hàng nhái</b> thuộc thẩm quyền của <b>Bộ phận Kiểm soát Hàng giả chuyên trách</b>.
+      </div>
+      <div class="box hold">
+        <span class="n">4</span><b>Việc AI đã làm ngay cho bạn:</b><br>
+        • Đã <b>đóng băng khoản tiền 490.000đ</b> trong tài khoản tạm giữ (Escrow).<br>
+        • Đã gắn cờ <code>SUSPECTED_COUNTERFEIT</code> để chuyển hồ sơ sang Bộ phận Thẩm định Hàng giả. Bạn vui lòng đính kèm ảnh chụp sản phẩm, mã vạch/batch code để chuyên viên thẩm định trong 24h!
+        <div class="btns">
+          <button type="button" class="btn shopee" onclick="setState('uploaded')">📷 Nộp ảnh sản phẩm &amp; mã batch giám định</button>
+          <button type="button" class="btn pri" onclick="setState('escalated')"><span class="n">5</span>Chuyển ngay sang Bộ phận Thẩm định Hàng giả</button>
+        </div>
+      </div>
+    `);
+  } else if (low.length < 30 || (!low.includes('lít') && !low.includes('size') && !low.includes('w') && !low.includes('màu') && !low.includes('bóc phốt'))) {
+    h += aiBubble(`
+      <div class="conf"><span class="n">1</span>Thiếu thông tin đơn hàng &amp; chi tiết điểm sai · Thu hẹp phạm vi (HAX G10 — Lớp ②)</div>
+      <div>Mình sẵn sàng hỗ trợ ngay! Để không đoán mò nhầm đơn hàng của bạn, bạn vui lòng <b>chọn 1 đơn hàng dưới đây</b> và cho mình biết sản phẩm nhận được khác mô tả ở điểm nào nhé:</div>
+      <div class="diff-card">
+        <div class="diff-title"><span>Danh sách đơn hàng gần đây của bạn (Kèm hạn trả hàng)</span></div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="padding:7px;border:1px solid var(--line);border-radius:8px;display:flex;justify-content:space-between;align-items:center">
+            <span><b>#SP-88412</b> · Pin sạc dự phòng Pro 65W · <b style="color:var(--g)">Còn 13 ngày</b></span>
+            <button type="button" class="btn shopee" onclick="selectCase('kb1')">Chọn đơn này</button>
+          </div>
+          <div style="padding:7px;border:1px solid var(--line);border-radius:8px;display:flex;justify-content:space-between;align-items:center">
+            <span><b>#SP-90215</b> · Áo thun Unisex Hàn Quốc · <b style="color:var(--g)">Còn 14 ngày</b></span>
+            <button type="button" class="btn shopee" onclick="selectCase('kb8')">Chọn đơn này</button>
+          </div>
+          <div style="padding:7px;border:1px solid var(--line);border-radius:8px;display:flex;justify-content:space-between;align-items:center">
+            <span><b>#SP-51002</b> · Tai nghe Bluetooth (Giao 25/10) · <b style="color:var(--r)">Đã quá hạn 15 ngày</b></span>
+            <span style="font-size:11.5px;color:var(--mut)">Hết hạn trả hàng</span>
+          </div>
+        </div>
+      </div>
+    `);
+  } else {
+    // Disputed technical spec (e.g. 6L vs 5L fryer) or threat
+    h += aiBubble(`
+      <div class="conf"><span class="n">1</span>Phát hiện thông số vùng xám / tranh chấp đo đạc · Giữ trung lập 2 phía (Lớp ① &amp; ④)</div>
+      <div class="diff-card">
+        <div class="diff-title"><span><span class="n">2</span>Đối chiếu Bản lưu lúc đặt hàng (Order Snapshot)</span></div>
+        <div class="diff-grid">
+          <div class="diff-col snap"><b>📌 Bản lưu lúc đặt (10/11)</b>Ghi: <code>Dung tích: 6 Lít</code> (Chưa ghi tách biệt dung tích tổng vỏ nồi vs dung tích lòng giỏ chiên).</div>
+          <div class="diff-col curr"><b>📏 Khiếu nại thực đo của khách</b><i>"${txt}"</i></div>
+        </div>
+      </div>
+      <div class="box hold">
+        <span class="n">3</span><span class="n">4</span><b>Xử lý trung lập ở Mức ② (Không tự bác bỏ, không tự hoàn vội):</b><br>
+        • Đã <b>tạm giữ tiền đơn hàng 490.000đ</b> trong Escrow (Hạn trả hàng còn 11 ngày).<br>
+        • Vì bản lưu lúc đặt chỉ ghi "6L" mà chưa nêu rõ quy chuẩn đo, mình cần thu thập bằng chứng từ <b>cả hai phía</b>:<br>
+        1) <b>Bạn (Người mua):</b> Chụp 1 ảnh tem thông số NSX dán trên vỏ thùng/thân máy + 1 ảnh đo lòng nồi.<br>
+        2) <b>Shop (Người bán):</b> Có <span class="timer" id="tm">23:59:55</span> để cung cấp tài liệu công bố thông số kỹ thuật của hãng trước khi Trưởng nhóm phân xử.
+        <div class="btns">
+          <button type="button" class="btn shopee" onclick="setState('uploaded')">📷 Tải lên 2 ảnh (Tem NSX + Ảnh đo thực tế)</button>
+          <button type="button" class="btn out" onclick="setState('escalated')"><span class="n">5</span>Chuyển Trưởng nhóm CSKH phân xử</button>
+        </div>
+      </div>
+    `);
+  }
+  return h;
+}
+
+function selectCase(c) {
+  curCase = c;
+  stepState = 'initial';
+  document.querySelectorAll('.case-btn').forEach(b => b.classList.toggle('on', b.dataset.case === c));
+  render();
+}
+
+function render() {
+  const o = ORDERS[curCase];
+  $('#order-banner').innerHTML = `
+    <div class="ord-top">
+      <span>Đơn hàng ${o.id} · ${o.name}</span>
+      <span>${o.price}</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;color:var(--mut);font-size:12.2px">
+      <span>⏱ Thời hạn chính sách: <b>${o.daysLeft}</b></span>
+      <span>Góc nhìn đang bật: <b>${curRole === 'buyer' ? 'Người mua' : 'Người bán (Shop)'}</b></span>
+    </div>
+  `;
+
+  let chatHTML = '';
+  if (curCase === 'kb1') {
+    chatHTML = curRole === 'buyer' ? renderBuyerKB1() : renderSellerKB1();
+  } else if (curCase === 'kb8') {
+    chatHTML = curRole === 'buyer' ? renderBuyerKB8() : renderSellerKB8();
+  } else if (curCase === 'kb9') {
+    chatHTML = renderKB9();
+  } else {
+    chatHTML = renderCustom();
+  }
+  $('#chat').innerHTML = chatHTML;
+
+  const PROMISES = {
+    1: '<b>Mức ① (Chỉ gợi ý):</b> <i>"AI chỉ tra cứu bản lưu mô tả giúp bạn, mọi thao tác điền đơn và gửi khiếu nại bạn tự làm."</i> An toàn cho sàn nhưng người mua đang bức xúc vì bị shop sửa bài đăng (KB1) sẽ cảm thấy không được bảo vệ ngay và đi bóc phốt.',
+    2: '<b>Mức ② (Mức nhóm chọn — Tách 2 bước):</b> <i>"Ngay khi bạn báo lỗi, AI lập tức <b>đóng băng tiền đơn hàng trong Escrow</b> để bảo vệ bạn, tự động <b>trích xuất Bản lưu mô tả lúc đặt hàng</b> làm bằng chứng, và <b>soạn sẵn hồ sơ</b> — chỉ giải ngân hoặc đóng khiếu nại sau khi có ảnh thực tế &amp; bước duyệt công bằng (Shop phản hồi trong 24h hoặc Nhân viên duyệt)."</i>',
+    3: '<b>Mức ③ (Tự quyết giải ngân/đóng + Hoàn tác 10p):</b> <i>"AI phán xử và chuyển tiền luôn trong 5 giây."</i> Rất nguy hiểm trong TMĐT: bị lời doạ bóc phốt thao túng làm Shop mất trắng tiền + hàng (KB1/KB7), bị lời kể 1 chiều lừa (KB9), hoặc tự đóng sập khiếu nại làm khách mất quyền kháng cáo (KB8).'
+  };
+  $('#promise-box').innerHTML = PROMISES[curLvl];
+
+  const lvlMap = {
+    1: ['Chỉ gợi ý', 'p-sug', 'Khách tự mở form điền tay; tiền chưa được đóng băng tự động.'],
+    2: ['Bước 1: Tự làm · Bước 2: Cần duyệt', 'p-ask', 'Tự làm đóng băng Escrow + soạn nháp (rẻ, đảo được); Giải ngân tiền thật bắt buộc Shop đồng ý hoặc Nhân viên duyệt sau 24h (vì tiền đi rồi không đòi lại được).'],
+    3: ['Tự làm + Hoàn tác 10p', 'p-auto', 'AI tự chuyển tiền ngay; hoàn tác 10p vô tác dụng nếu kẻ gian rút tiền ngay hoặc người bán không online kịp.']
+  }[curLvl];
+
+  const closeMap = {
+    1: ['Chỉ gợi ý', 'p-sug', 'AI chỉ nêu thông số, không đóng cũng không đổi hướng giúp khách.'],
+    2: ['Cần người duyệt', 'p-ask', 'Khách tự bấm đổi sang lý do "Không vừa size" [6] hoặc Nhân viên duyệt đóng sau 48h — chặn mất quyền kháng cáo oan.'],
+    3: ['Tự làm + Hoàn tác 10p', 'p-auto', 'AI tự đóng sập khiếu nại và giải ngân cho Shop ngay khi thấy tem khớp.']
+  }[curLvl];
+
+  const TOOLS = [
+    ['yeu_cau_bang_chung', 'Tự làm', 'p-auto', 'Hỏi xin thêm đúng 1–2 ảnh còn thiếu (VD: ảnh thông số 22.5W trên củ sạc). Sai thì rẻ, khách bấm bỏ qua hoặc gặp nhân viên được ngay.', 0],
+    ['chuyen_truong_nhom', 'Tự làm', 'p-auto', 'Tự chuyển khi phát hiện sửa mô tả, nghi hàng giả, hoặc khi khách bấm nút [5]. Chuyển thừa chỉ tốn 1 phút của nhân viên; không chuyển thì sập uy tín.', 0],
+    ['soan_hoan_tien (Tách 2 bước)', lvlMap[0], lvlMap[1], lvlMap[2], 1],
+    ['tu_choi_khieu_nai', closeMap[0], closeMap[1], closeMap[2], 1],
+    ['phat_shop', 'CẤM (Forbidden)', 'p-no', 'Trừ điểm, khoá shop ảnh hưởng sinh kế cả cửa hàng và rất khó đảo ngược. AI chỉ gắn cờ chuyển bộ phận Kiểm định, tuyệt đối không có nút phạt shop.', 0]
+  ];
+
+  $('#tools-tbody').innerHTML = TOOLS.map(r => `
+    <tr class="${r[4] ? 'changed' : ''}">
+      <td><code>${r[0]}</code></td>
+      <td><span class="pill ${r[2]}">${r[1]}</span></td>
+      <td>${r[3]}</td>
+    </tr>
+  `).join('');
+
+  const ANNS = [
+    ['1', 'HAX G1 & G2 + Điều 11 Luật AI 134/2025/QH15', 'Nhãn định danh "Trợ lý AI" + Huy hiệu nói rõ AI chắc điều gì (lệch mô tả 65W→22.5W) và chưa chắc điều gì (thiếu 1 ảnh thực tế), không dùng % vô nghĩa.'],
+    ['2', 'HAX G11 + PAIR Explainability & Trust', 'Thẻ Đối chiếu Nguồn sự thật 2 cột: Đặt "Bản lưu lúc đặt (Order Snapshot)" cạnh "Mô tả hiện tại / Thực tế" để cả Người mua và Người bán tự kiểm chứng.'],
+    ['3', 'HAX G10 · Thu hẹp phạm vi khi nghi ngờ', 'Không hoàn tiền liều vì lời doạ bóc phốt; thu hẹp về đúng 1 hành động cụ thể: chụp 1 ảnh thông số trên thân củ sạc (hoặc chọn đơn hàng ở KB3).'],
+    ['4', 'HAX G8 + PAIR Feedback & Control', 'Tạm giữ tiền Escrow (650.000đ) ngay lập tức để trấn an Người mua + Đồng hồ đếm ngược 24h đảm bảo Người bán có quyền phản hồi trước khi giải ngân.'],
+    ['5', 'PAIR Errors + Graceful Failure', 'Luôn có nút chuyển Trưởng nhóm CSKH / Bộ phận chuyên trách kèm sẵn tóm tắt Snapshot Diff để khách không phải kể lại từ đầu. Không có nút phạt shop.'],
+    ['6', 'HAX G9 · Sửa dễ dàng & Điều hướng mềm', 'Ở KB8 (Người bán đúng): Nút đổi ngay sang lý do "Trả hàng Không vừa size / Đổi ý" (không tính lỗi Shop) hoặc bổ sung ảnh thước đo mà không phải tạo lại từ đầu.']
+  ];
+
+  $('#ann-list').innerHTML = ANNS.map(a => `
+    <li><span class="n">${a[0]}</span><b>${a[1]}:</b> ${a[2]}</li>
+  `).join('');
+
+  clearInterval(timerInterval);
+  const tm = $('#tm');
+  if (tm) {
+    remainSec = curLvl === 3 ? 598 : 86395;
+    timerInterval = setInterval(() => {
+      if (remainSec > 0) remainSec--;
+      if (curLvl === 3) {
+        const m = String(Math.floor(remainSec / 60)).padStart(2, '0');
+        const s = String(remainSec % 60).padStart(2, '0');
+        tm.textContent = `${m}:${s}`;
+      } else {
+        const hrs = String(Math.floor(remainSec / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((remainSec % 3600) / 60)).padStart(2, '0');
+        const secs = String(remainSec % 60).padStart(2, '0');
+        tm.textContent = `${hrs}:${mins}:${secs}`;
+      }
+    }, 1000);
+  }
+}
+
+document.querySelectorAll('.case-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.case-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    curCase = btn.dataset.case;
+    stepState = 'initial';
+    curRole = 'buyer';
+    $('#role-buyer').classList.add('on');
+    $('#role-seller').classList.remove('on');
+    render();
+  });
+});
+
+document.querySelectorAll('.lvl').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.lvl').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    curLvl = Number(btn.dataset.lvl);
+    stepState = 'initial';
+    render();
+  });
+});
+
+$('#ann-toggle').addEventListener('change', e => {
+  document.body.classList.toggle('hide-n', !e.target.checked);
+});
+
+const params = new URLSearchParams(location.search);
+if (params.get('case') && ORDERS[params.get('case')]) {
+  curCase = params.get('case');
+  document.querySelectorAll('.case-btn').forEach(b => b.classList.toggle('on', b.dataset.case === curCase));
+}
+if (params.get('role') === 'seller') {
+  curRole = 'seller';
+  $('#role-buyer').classList.remove('on');
+  $('#role-seller').classList.add('on');
+}
+if (params.get('lvl')) {
+  curLvl = Number(params.get('lvl'));
+  document.querySelectorAll('.lvl').forEach(b => b.classList.toggle('on', Number(b.dataset.lvl) === curLvl));
+}
+
+render();
+</script>
+</body>
+</html>
